@@ -5,6 +5,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -18,5 +19,6 @@ module.exports = {
   devtool: 'cheap-module-eavl-source-map',
   devServer: {
     contentBase: path.join(__dirname, 'public'),
+    historyApiFallback: true,
   },
 };
