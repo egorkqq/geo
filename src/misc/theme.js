@@ -13,7 +13,8 @@ export const theme = {
     main: '#24292e',
     secondary: '#f26b00',
     background: '#fff',
-    backgroundSecondary: 'f7f7f7',
+    backgroundSecondary: '#f7f7f7',
+    orange: '#f26b00',
   },
   fontFamily: FONT_FAMILY,
   typography: {
@@ -23,12 +24,14 @@ export const theme = {
   breakpoints: {
     ...BREAKPOINTS,
   },
+  transition: '.2s ease',
 };
 
 export const darkTheme = {
   ...theme,
   colors: {
-    main: 'hsla(0,0%,100%,.6)',
+    ...theme.colors,
+    main: '#f2f2f2',
     secondary: 'white',
     background: '#20232a',
     backgroundSecondary: '',

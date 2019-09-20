@@ -8,11 +8,12 @@ const StaticPart = styled.span`
   color: ${(p) => p.theme.colors.primary};
   text-decoration: none;
   font-weight: 600;
+  transition: ${(p) => p.theme.transition};
 `;
 
 const DynamicPart = styled.span`
   font-size: 32px;
-  color: ${(p) => p.theme.colors.secondary};
+  color: ${(p) => p.theme.colors.orange};
 `;
 
 const LogoWrapper = styled.div`

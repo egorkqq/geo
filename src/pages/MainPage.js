@@ -1,9 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
+import Container from '../misc/Container';
+import MainMenu from '../MainMenu/MainMenu';
 
 const MainPage = () => {
   return (
     <>
-      <h2>PAGE</h2>
+      <Container>
+        <MainMenu></MainMenu>
+      </Container>
     </>
   );
 };

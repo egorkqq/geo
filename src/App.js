@@ -12,7 +12,7 @@ import {
   MainPage,
   SearchPage,
 } from './pages';
-import Header from './Header/Header';
+import { Header } from './Header';
 
 const client = new ApolloClient({
   uri: 'https://countries.trevorblades.com/',

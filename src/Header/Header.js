@@ -12,7 +12,11 @@ const HeaderWrapper = styled.div`
   padding: 10px 0;
 `;
 
-const Header = ({ location: { pathname }, toggleTheme, currentTheme }) => {
+const HeaderComponent = ({
+  location: { pathname },
+  toggleTheme,
+  currentTheme,
+}) => {
   return (
     <header>
       <Container>
@@ -25,4 +29,4 @@ const Header = ({ location: { pathname }, toggleTheme, currentTheme }) => {
   );
 };
 
-export default withRouter(Header);
+export const Header = withRouter(HeaderComponent);
