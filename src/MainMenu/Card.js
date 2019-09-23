@@ -12,7 +12,7 @@ const CardWrapper = styled.div`
   box-sizing: border-box;
   height: 70vh;
   padding: 20px;
-  border: 3px solid ${(p) => p.theme.colors.primary};
+  border: 3px solid ${(p) => p.theme.colors.main};
   margin-right: 30px;
   margin-bottom: 30px;
   background: url(${(p) => p.image}) 40% 40%;

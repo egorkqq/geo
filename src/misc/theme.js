@@ -8,13 +8,15 @@ const BREAKPOINTS = {
 
 const FONT_FAMILY = 'IBM Plex Sans';
 
+export const MAIN_ORANGE = '#f26b00';
+
 export const theme = {
   colors: {
     main: '#24292e',
-    secondary: '#f26b00',
+    secondary: MAIN_ORANGE,
     background: '#fff',
     backgroundSecondary: '#f7f7f7',
-    orange: '#f26b00',
+    orange: MAIN_ORANGE,
   },
   fontFamily: FONT_FAMILY,
   typography: {
@@ -34,6 +36,5 @@ export const darkTheme = {
     main: '#f2f2f2',
     secondary: 'white',
     background: '#20232a',
-    backgroundSecondary: '',
   },
 };

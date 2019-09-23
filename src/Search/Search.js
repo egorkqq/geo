@@ -1,7 +1,70 @@
 import React from 'react';
+import styled from 'styled-components';
+import { LoopingRhombusesSpinner } from 'react-epic-spinners';
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
+import { MAIN_ORANGE as orangeColor } from '../misc/theme';
+import Input from './Input';
+import Results from './Results';
+import { useLocalStorage } from '../misc/useLocalStorage';
+
+const SearchWrapper = styled.div`
+  margin-top: 100px;
+`;
+const Loading = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 50px 0;
+`;
+const SearchText = styled.div`
+  font-size: 24px;
+  margin: 50px 0;
+  color: ${(p) => p.theme.colors.main};
+`;
+
+const getCountries = gql`
+  {
+    countries {
+      code
+      name
+    }
+    continents {
+      code
+      name
+    }
+    languages {
+      code
+      name
+    }
+  }
+`;
 
 const Search = () => {
-  return 'search';
+  const { loading, error, data } = useQuery(getCountries);
+  const [searchTerm, setSearchTerm] = useLocalStorage('searchTerm', '');
+
+  return (
+    <SearchWrapper>
+      <Input
+        disabled={Boolean(loading || error)}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+      />
+      {loading && (
+        <Loading>
+          <SearchText>Loading...</SearchText>
+          <LoopingRhombusesSpinner size={52} color={orangeColor} />
+        </Loading>
+      )}
+      {error && <SearchText>Server error, try later :(</SearchText>}
+      {data && Boolean(searchTerm.length) && (
+        <Results allItems={data} searchTerm={searchTerm} />
+      )}
+    </SearchWrapper>
+  );
 };
 
 export default Search;
