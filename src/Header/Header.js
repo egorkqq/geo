@@ -17,11 +17,22 @@ const HeaderComponent = ({
   toggleTheme,
   currentTheme,
 }) => {
+  const [sectionName, setSectionName] = React.useState('');
+  const [prepare, setPrepare] = React.useState(true);
+  React.useEffect(() => {
+    setPrepare(false);
+    setTimeout(() => {
+      setSectionName(pathnameParser(pathname));
+      setPrepare(true);
+      // компонент Logo узнает, что сейчас обновится раздел, прячет его, чтобы анимация не глитчилась, потоиу что в другом случае видно как меняется имя раздела, а потом уже анимация срабатывает, что выглядит неряшливо
+    }, 100);
+  }, [pathname]);
+
   return (
     <header>
       <Container>
         <HeaderWrapper>
-          <Logo currentPage={pathnameParser(pathname)} />
+          <Logo currentPage={sectionName} prepare={prepare} />
           <Navigation toggleTheme={toggleTheme} currentTheme={currentTheme} />
         </HeaderWrapper>
       </Container>

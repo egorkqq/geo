@@ -20,15 +20,23 @@ const LogoWrapper = styled.div`
   display: inline-flex;
 `;
 
-const Logo = ({ currentPage }) => {
+const Logo = ({ currentPage, prepare }) => {
+  const [animation, setAnimation] = React.useState(true);
+  React.useEffect(() => {
+    setAnimation(false);
+    setTimeout(() => setAnimation(true), 100);
+  }, [currentPage]);
+
   return (
     <LogoWrapper>
       <Link to="/">
         <StaticPart>Geo</StaticPart>
       </Link>
-      <Fade top>
-        <DynamicPart>{currentPage}</DynamicPart>
-      </Fade>
+      {prepare && (
+        <Fade top>
+          <DynamicPart>{currentPage}</DynamicPart>
+        </Fade>
+      )}
     </LogoWrapper>
   );
 };
