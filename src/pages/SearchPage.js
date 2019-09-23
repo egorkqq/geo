@@ -1,10 +1,15 @@
 import React from 'react';
+import { Fade } from 'react-reveal';
+import Container from '../misc/Container';
+import Search from '../Search/Search';
 
 const SearchPage = () => {
   return (
-    <>
-      <h2>PAGE</h2>
-    </>
+    <Fade bottom>
+      <Container>
+        <Search />
+      </Container>
+    </Fade>
   );
 };
 

@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     background: ${(props) => props.theme.colors.background};
     box-sizing: border-box;
     margin: 0;
+    overflow: hidden;
   }
   a:-webkit-any-link {
     color: ${(props) => props.theme.colors.main};
