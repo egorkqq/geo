@@ -1,8 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Lang from '../misc/Svg/Lang';
 import Count from '../misc/Svg/Count';
 import Cont from '../misc/Svg/Cont';
+
+const StrongLink = styled(Link)`
+  display: block;
+  margin-right: 16px;
+`;
 
 const PinWrapper = styled.div`
   display: flex;
@@ -11,7 +17,6 @@ const PinWrapper = styled.div`
   padding: 8px;
   border: 1px solid ${(p) => p.theme.colors.main};
   border-radius: 3px;
-  margin-right: 16px;
   cursor: pointer;
 
   &:last-child {
@@ -47,19 +52,32 @@ const Pin = ({ title, code, type }) => {
       return <Cont />;
     }
   };
+  const createLink = (type) => {
+    if (type === 'lang') {
+      return '/language';
+    }
+    if (type === 'count') {
+      return '/country';
+    }
+    if (type === 'cont') {
+      return '/continent';
+    }
+  };
 
   return (
-    <PinWrapper>
-      <PinIcon>
-        {/* <img
+    <StrongLink to={`${createLink(type)}/${code}`}>
+      <PinWrapper>
+        <PinIcon>
+          {/* <img
           src={`https://www.countryflags.io/${code}/shiny/32.png`}
           alt={code}
           title={title}
         /> */}
-        {renderIcon(type)}
-      </PinIcon>
-      <PinText>{title}</PinText>
-    </PinWrapper>
+          {renderIcon(type)}
+        </PinIcon>
+        <PinText>{title}</PinText>
+      </PinWrapper>
+    </StrongLink>
   );
 };
 

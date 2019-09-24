@@ -1,4 +1,11 @@
 export const pathnameParser = (pathname) => {
+  if (
+    pathname.includes('/country/') ||
+    pathname.includes('/language/') ||
+    pathname.includes('/continent/')
+  ) {
+    return pathname.slice(-2);
+  }
   switch (pathname) {
     case '/':
       return 'Main';

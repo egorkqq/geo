@@ -1,7 +1,7 @@
 import AllPage from './AllPage';
-import DetailPage from './DetailPage';
+import CountryDetailPage from './CountryDetailPage';
 import FavouritesPage from './FavouritesPage';
 import MainPage from './MainPage';
 import SearchPage from './SearchPage';
 
-export { AllPage, DetailPage, FavouritesPage, MainPage, SearchPage };
+export { AllPage, CountryDetailPage, FavouritesPage, MainPage, SearchPage };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { ThemeProvider } from 'styled-components';
@@ -7,7 +7,7 @@ import { theme, darkTheme } from './misc/theme';
 import { GlobalStyle } from './misc/GlobalStyle';
 import {
   AllPage,
-  DetailPage,
+  CountryDetailPage,
   FavouritesPage,
   MainPage,
   SearchPage,
@@ -33,7 +33,8 @@ export const App = () => {
             <Route path="/favourites" component={FavouritesPage} />
             <Route path="/all" component={AllPage} />
             <Route path="/search" component={SearchPage} />
-            <Route path="/detail" component={DetailPage} />
+            <Route path="/country/:code" component={CountryDetailPage} />
+            <Redirect to="/" />
           </Switch>
         </BrowserRouter>
       </ThemeProvider>
