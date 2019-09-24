@@ -36,14 +36,6 @@ const Results = ({
       }),
     [searchTerm],
   );
-  console.log(searchTerm);
-  if (!searchTerm.length) {
-    return (
-      <ResultsWrapper>
-        <CategoryName>Enter something</CategoryName>
-      </ResultsWrapper>
-    );
-  }
 
   // prettier-ignore
   if (!filterItems(countries).length && !filterItems(languages).length && !filterItems(continents).length) {

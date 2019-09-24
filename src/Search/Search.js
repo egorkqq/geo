@@ -59,9 +59,23 @@ const Search = () => {
           <LoopingRhombusesSpinner size={52} color={orangeColor} />
         </Loading>
       )}
-      {error && <SearchText>Server error, try later :(</SearchText>}
+      {error && (
+        <Loading>
+          <SearchText>Server error, try later :(</SearchText>
+        </Loading>
+      )}
       {data && Boolean(searchTerm.length) && (
         <Results allItems={data} searchTerm={searchTerm} />
+      )}
+      {Boolean(!searchTerm.length) && (
+        <Loading>
+          <SearchText>
+            Type something and we will find it for you{' '}
+            <span aria-label="LOVE" role="img">
+              ❤️
+            </span>
+          </SearchText>
+        </Loading>
       )}
     </SearchWrapper>
   );
