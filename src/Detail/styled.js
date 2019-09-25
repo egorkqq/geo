@@ -66,3 +66,23 @@ export const InformationContent = styled.div`
     }
   }
 `;
+
+export const StyledLink = styled.a`
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: ${(p) => p.theme.colors.main};
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  &:hover {
+    color: ${(p) => p.theme.colors.secondary};
+    & svg {
+      fill: ${(p) => p.theme.colors.secondary};
+    }
+  }
+  & svg {
+    height: 22px;
+    width: 22px;
+    fill: ${(p) => p.theme.colors.main};
+  }
+`;
