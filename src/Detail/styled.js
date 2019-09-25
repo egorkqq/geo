@@ -19,6 +19,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 50px;
+  position: relative;
 `;
 
 export const TitleWrapper = styled.div`

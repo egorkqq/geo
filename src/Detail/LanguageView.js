@@ -46,7 +46,7 @@ const LanguageView = ({ name, native, code }) => {
         <InfoWrapper>
           {native && (
             <InformationCell>
-              <InformationType>native name:</InformationType>
+              <InformationType>native:</InformationType>
               <InformationContent>{native}</InformationContent>
             </InformationCell>
           )}

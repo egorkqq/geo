@@ -14,6 +14,7 @@ import {
 } from './pages';
 import { Header } from './Header';
 import LanguageDetailPage from './pages/LanguageDetailPage';
+import ContinentDetailPage from './pages/ContinentDetailPage';
 
 const client = new ApolloClient({
   uri: 'https://countries.trevorblades.com/',
@@ -36,6 +37,7 @@ export const App = () => {
             <Route path="/search" component={SearchPage} />
             <Route path="/country/:code" component={CountryDetailPage} />
             <Route path="/language/:code" component={LanguageDetailPage} />
+            <Route path="/continent/:code" component={ContinentDetailPage} />
             <Redirect to="/" />
           </Switch>
         </BrowserRouter>
