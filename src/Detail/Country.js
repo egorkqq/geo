@@ -1,24 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { LoopingRhombusesSpinner } from 'react-epic-spinners';
 import { MAIN_ORANGE as orangeColor } from '../misc/theme';
 import CountryView from './CountryView';
-
-const Loading = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: 50px 0;
-`;
-const Text = styled.div`
-  font-size: 24px;
-  margin: 50px 0;
-  color: ${(p) => p.theme.colors.main};
-`;
+import { Loading, Text } from './styled';
 
 const Country = ({ code }) => {
   const getCountry = gql`
