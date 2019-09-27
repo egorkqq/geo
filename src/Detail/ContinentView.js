@@ -85,7 +85,14 @@ const LinksWrapper = styled.div`
   align-items: center;
 `;
 
-const ContinentView = ({ code, name, countries }) => {
+const ContinentView = ({
+  code,
+  name,
+  countries,
+  isFav,
+  addToFavs,
+  removeFromFavs,
+}) => {
   return (
     <Container>
       <Wrapper>
@@ -101,7 +108,11 @@ const ContinentView = ({ code, name, countries }) => {
           ))}
         </CountriesContainer>
         <LinksWrapper>
-          <StyledLink>Add to favorites</StyledLink>
+          <StyledLink
+            onClick={isFav ? () => removeFromFavs(code) : () => addToFavs(code)}
+          >
+            {isFav ? 'Remove from favourites' : 'Add to favourites'}
+          </StyledLink>
           <StyledLink>
             More Info on Wiki
             <ExtLink />

@@ -33,7 +33,14 @@ const IconWrapper = styled.span`
   }
 `;
 
-const LanguageView = ({ name, native, code }) => {
+const LanguageView = ({
+  name,
+  native,
+  code,
+  isFav,
+  addToFavs,
+  removeFromFavs,
+}) => {
   return (
     <Container>
       <Wrapper>
@@ -52,7 +59,11 @@ const LanguageView = ({ name, native, code }) => {
           )}
         </InfoWrapper>
         <LinksWrapper>
-          <StyledLink>Add to favs</StyledLink>
+          <StyledLink
+            onClick={isFav ? () => removeFromFavs(code) : () => addToFavs(code)}
+          >
+            {isFav ? 'Remove from favourites' : 'Add to favourites'}
+          </StyledLink>
           <StyledLink
             target="_blank"
             href={`https://en.wikipedia.org/wiki/${name}_language`}

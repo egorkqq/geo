@@ -61,6 +61,9 @@ const CountryView = ({
   currency,
   languages,
   emoji,
+  isFav,
+  addToFavs,
+  removeFromFavs,
 }) => {
   return (
     <Container>
@@ -121,7 +124,13 @@ const CountryView = ({
             />
           </FlagWrapper>
           <Links>
-            <StyledLink>Add to favs</StyledLink>
+            <StyledLink
+              onClick={
+                isFav ? () => removeFromFavs(code) : () => addToFavs(code)
+              }
+            >
+              {isFav ? 'Remove from favourites' : 'Add to favourites'}
+            </StyledLink>
             <StyledLink
               target="_blank"
               href={`https://en.wikipedia.org/wiki/${name}`}

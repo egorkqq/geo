@@ -75,6 +75,7 @@ export const StyledLink = styled.a`
   display: flex;
   align-items: center;
   white-space: nowrap;
+  cursor: pointer;
   &:hover {
     color: ${(p) => p.theme.colors.secondary};
     & svg {

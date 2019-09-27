@@ -5,6 +5,7 @@ import { LoopingRhombusesSpinner } from 'react-epic-spinners';
 import { MAIN_ORANGE as orangeColor } from '../misc/theme';
 import CountryView from './CountryView';
 import { Loading, Text } from './styled';
+import { useLocalStorage } from '../misc/useLocalStorage';
 
 const Country = ({ code }) => {
   const getCountry = gql`
@@ -28,6 +29,15 @@ const Country = ({ code }) => {
   }
 `;
   const { loading, error, data } = useQuery(getCountry);
+  const [favCountries, setFavCountries] = useLocalStorage('favCountries', []);
+  const addToFavs = (countryCode) => {
+    setFavCountries([...favCountries, countryCode]);
+  };
+  const removeFromFavs = (countryCode) => {
+    const newFavCountries = favCountries.filter((item) => item !== countryCode);
+    setFavCountries(newFavCountries);
+  };
+  const isFav = favCountries.includes(code);
 
   return (
     <div>
@@ -52,6 +62,9 @@ const Country = ({ code }) => {
           emoji={data.country.emoji}
           languages={data.country.languages}
           code={code}
+          removeFromFavs={removeFromFavs}
+          addToFavs={addToFavs}
+          isFav={isFav}
         />
       )}
     </div>

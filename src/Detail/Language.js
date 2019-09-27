@@ -5,6 +5,7 @@ import { gql } from 'apollo-boost';
 import { LoopingRhombusesSpinner } from 'react-epic-spinners';
 import { MAIN_ORANGE as orangeColor } from '../misc/theme';
 import LanguageView from './LanguageView';
+import { useLocalStorage } from '../misc/useLocalStorage';
 
 const Loading = styled.div`
   display: flex;
@@ -31,6 +32,17 @@ const Language = ({ code }) => {
   }
 `;
   const { loading, error, data } = useQuery(getLanguage);
+  const [favLanguages, setFavLanguages] = useLocalStorage('favLanguages', []);
+  const addToFavs = (languageCode) => {
+    setFavLanguages([...favLanguages, languageCode]);
+  };
+  const removeFromFavs = (languageCode) => {
+    const newFavLanguages = favLanguages.filter(
+      (item) => item !== languageCode,
+    );
+    setFavLanguages(newFavLanguages);
+  };
+  const isFav = favLanguages.includes(code);
 
   return (
     <div>
@@ -50,6 +62,9 @@ const Language = ({ code }) => {
           name={data.language.name}
           native={data.language.native}
           code={code}
+          removeFromFavs={removeFromFavs}
+          addToFavs={addToFavs}
+          isFav={isFav}
         />
       )}
     </div>

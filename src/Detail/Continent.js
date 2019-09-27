@@ -5,6 +5,7 @@ import { LoopingRhombusesSpinner } from 'react-epic-spinners';
 import { MAIN_ORANGE as orangeColor } from '../misc/theme';
 import ContinentView from './ContinentView';
 import { Loading, Text } from './styled';
+import { useLocalStorage } from '../misc/useLocalStorage';
 
 const Continent = ({ code }) => {
   const getContinent = gql`
@@ -19,6 +20,20 @@ const Continent = ({ code }) => {
   }
 `;
   const { loading, error, data } = useQuery(getContinent);
+  const [favContinents, setFavContinents] = useLocalStorage(
+    'favContinents',
+    [],
+  );
+  const addToFavs = (continentCode) => {
+    setFavContinents([...favContinents, continentCode]);
+  };
+  const removeFromFavs = (continentCode) => {
+    const newFavContinents = favContinents.filter(
+      (item) => item !== continentCode,
+    );
+    setFavContinents(newFavContinents);
+  };
+  const isFav = favContinents.includes(code);
 
   return (
     <div>
@@ -38,6 +53,9 @@ const Continent = ({ code }) => {
           code={code}
           name={data.continent.name}
           countries={data.continent.countries}
+          removeFromFavs={removeFromFavs}
+          addToFavs={addToFavs}
+          isFav={isFav}
         />
       )}
     </div>
