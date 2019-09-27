@@ -3,7 +3,7 @@ import { Map, TileLayer, Polygon } from 'react-leaflet';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { countries } from './countriesData';
-import { useLocalStorage } from '../misc/useLocalStorage';
+import { useSessionStorage } from '../misc/useSessionStorage';
 import { usePrevious } from '../misc/usePrevious';
 
 const mapStyle = {
@@ -36,8 +36,8 @@ const Text = styled.span`
 `;
 
 const All = ({ dark }) => {
-  const [coords, setCoords] = useLocalStorage('mapCoords', [47, 49]);
-  const [zoom, setZoom] = useLocalStorage('mapZoom', 3);
+  const [coords, setCoords] = useSessionStorage('mapCoords', [47, 49]);
+  const [zoom, setZoom] = useSessionStorage('mapZoom', 3);
   const [current, setCurrent] = React.useState({
     top: 0,
     left: 0,

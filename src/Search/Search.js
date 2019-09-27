@@ -6,7 +6,7 @@ import { gql } from 'apollo-boost';
 import { MAIN_ORANGE as orangeColor } from '../misc/theme';
 import Input from './Input';
 import Results from './Results';
-import { useLocalStorage } from '../misc/useLocalStorage';
+import { useSessionStorage } from '../misc/useSessionStorage';
 
 const SearchWrapper = styled.div`
   margin-top: 100px;
@@ -44,7 +44,7 @@ const getCountries = gql`
 
 const Search = () => {
   const { loading, error, data } = useQuery(getCountries);
-  const [searchTerm, setSearchTerm] = useLocalStorage('searchTerm', '');
+  const [searchTerm, setSearchTerm] = useSessionStorage('searchTerm', '');
 
   return (
     <SearchWrapper>
