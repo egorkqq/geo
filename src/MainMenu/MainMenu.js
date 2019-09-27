@@ -8,6 +8,9 @@ const MainMenuWrapper = styled.div`
   justify-content: space-around;
   flex-wrap: wrap;
   margin-top: 100px;
+  @media (max-width: 992px) {
+    margin-top: 30px;
+  }
 `;
 
 const MainMenu = () => {

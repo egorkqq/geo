@@ -1,10 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { generateRandomStuff } from '../misc/generateRandomStuff';
 
 const StrongLink = styled(Link)`
   display: block;
   flex: 0 0 calc((100% - 80px) / 3);
+  @media (max-width: 992px) {
+    flex: 1 1 100%;
+  }
 `;
 
 const CardWrapper = styled.div`
@@ -32,9 +36,9 @@ const CardTitle = styled.h3`
   color: ${(p) => p.theme.colors.orange};
 `;
 
-const Card = ({ title, image, imageSize, link }) => {
+const Card = ({ title, image, imageSize, link, id }) => {
   return (
-    <StrongLink to={link}>
+    <StrongLink to={id === 'random' ? generateRandomStuff() : link}>
       <CardWrapper image={image} imageSize={imageSize}>
         <CardTitle>{title}</CardTitle>
       </CardWrapper>

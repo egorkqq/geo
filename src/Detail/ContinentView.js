@@ -32,6 +32,10 @@ const CountriesContainer = styled.div`
   flex-wrap: wrap;
   max-height: 60vh;
   z-index: 100;
+  @media (max-width: 1240px) {
+    flex-direction: row;
+    max-height: none;
+  }
 `;
 const CountriesTitle = styled.div`
   text-align: center;
