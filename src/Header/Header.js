@@ -21,10 +21,12 @@ const HeaderComponent = ({
   const [prepare, setPrepare] = React.useState(true);
   React.useEffect(() => {
     setPrepare(false);
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setSectionName(pathnameParser(pathname));
       setPrepare(true);
       // компонент Logo узнает, что сейчас обновится раздел, прячет его, чтобы анимация не глитчилась, потоиу что в другом случае видно как меняется имя раздела, а потом уже анимация срабатывает, что выглядит неряшливо
+
+      return () => clearTimeout(timer);
     }, 100);
   }, [pathname]);
 

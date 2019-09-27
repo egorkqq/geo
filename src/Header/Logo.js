@@ -25,7 +25,9 @@ const Logo = ({ currentPage, prepare }) => {
   const [animation, setAnimation] = React.useState(true);
   React.useEffect(() => {
     setAnimation(false);
-    setTimeout(() => setAnimation(true), 100);
+    const timer = setTimeout(() => setAnimation(true), 100);
+
+    return () => clearTimeout(timer);
   }, [currentPage]);
 
   return (

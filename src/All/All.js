@@ -31,6 +31,10 @@ const Tooltip = styled.div`
   color: ${(p) => p.theme.colors.main};
 `;
 
+const Text = styled.span`
+  font-size: 18px;
+`;
+
 const All = ({ dark }) => {
   const [coords, setCoords] = useLocalStorage('mapCoords', [47, 49]);
   const [zoom, setZoom] = useLocalStorage('mapZoom', 3);
@@ -41,6 +45,7 @@ const All = ({ dark }) => {
     code: undefined,
     opened: false,
   });
+  const [showTip, setShowTip] = React.useState(true);
 
   const initZoom = zoom;
   const initCoords = coords;
@@ -60,6 +65,12 @@ const All = ({ dark }) => {
       opened: true,
     });
   };
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => setShowTip(false), 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <Map
@@ -86,18 +97,15 @@ const All = ({ dark }) => {
           positions={country.borders}
           stroke
           opacity={0.1}
-          color={dark ? 'rgba(255,255,255, 0.5)' : 'rgba(0,0,0,0.1)'}
+          color={dark ? 'rgba(255,255,255, 0.2)' : 'rgba(0,0,0,0.0)'}
           onClick={(e) => onClick(e, country.code, country.name)}
         />
       ))}
-      <Tooltip
-        opened={current.opened}
-        top={current.top}
-        left={current.left}
-        code={current.code}
-        name={current.name}
-      >
+      <Tooltip opened={current.opened} top={current.top} left={current.left}>
         <Link to={`/country/${current.code}`}>{current.name}</Link>
+      </Tooltip>
+      <Tooltip left={50} top={10} opened={showTip}>
+        <Text>Tip: just click on the country</Text>
       </Tooltip>
     </Map>
   );
