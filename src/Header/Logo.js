@@ -18,6 +18,7 @@ const DynamicPart = styled.span`
 
 const LogoWrapper = styled.div`
   display: inline-flex;
+  z-index: 1000;
 `;
 
 const Logo = ({ currentPage, prepare }) => {

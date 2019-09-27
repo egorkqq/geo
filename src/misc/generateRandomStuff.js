@@ -1,4 +1,4 @@
-const languages = ['ru', 'as', 'bi', 'bs', 'da', 'af', 'nl', 'ua', 'lt', 'na'];
+const languages = ['ru', 'ar', 'bi', 'bs', 'da', 'af', 'nl', 'ua', 'lt', 'na'];
 const continents = ['AF', 'OC', 'SA', 'AS', 'NA', 'EU', 'SA', 'AS', 'NA', 'EU'];
 const countries = ['RU', 'NO', 'BA', 'US', 'UA', 'CA', 'SG', 'FR', 'KE', 'AG'];
 

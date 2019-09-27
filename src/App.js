@@ -33,7 +33,10 @@ export const App = () => {
           <Switch>
             <Route exact path="/" component={MainPage} />
             <Route path="/favourites" component={FavouritesPage} />
-            <Route path="/all" component={AllPage} />
+            <Route
+              path="/all"
+              render={() => <AllPage currentTheme={currentTheme} />}
+            />
             <Route path="/search" component={SearchPage} />
             <Route path="/country/:code" component={CountryDetailPage} />
             <Route path="/language/:code" component={LanguageDetailPage} />

@@ -12,4 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme.colors.main};
     text-decoration: none;
   }
+  .leaflet-container {
+    background: none !important;
+  }
 `;

@@ -1,10 +1,12 @@
 import React from 'react';
 import { Fade } from 'react-reveal';
+import All from '../All/All';
+import { darkTheme } from '../misc/theme';
 
-const AllPage = () => {
+const AllPage = ({ currentTheme }) => {
   return (
     <Fade>
-      <h2>PAGE</h2>
+      <All dark={currentTheme === darkTheme} />
     </Fade>
   );
 };
