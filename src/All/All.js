@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { countries } from './countriesData';
 import { useSessionStorage } from '../misc/useSessionStorage';
 import { usePrevious } from '../misc/usePrevious';
+import { useLocalStorage } from '../misc/useLocalStorage';
+import { MAIN_ORANGE as orangeColor } from '../misc/theme';
 
 const mapStyle = {
   height: '90vh',
@@ -36,6 +38,7 @@ const Text = styled.span`
 `;
 
 const All = ({ dark }) => {
+  const [favCountries, setFavCountries] = useLocalStorage('favCountries', []);
   const [coords, setCoords] = useSessionStorage('mapCoords', [47, 49]);
   const [zoom, setZoom] = useSessionStorage('mapZoom', 3);
   const [current, setCurrent] = React.useState({
@@ -97,7 +100,13 @@ const All = ({ dark }) => {
           positions={country.borders}
           stroke
           opacity={0.1}
-          color={dark ? 'rgba(255,255,255, 0.2)' : 'rgba(0,0,0,0.0)'}
+          color={
+            favCountries.includes(country.code)
+              ? orangeColor
+              : dark
+              ? 'rgba(255,255,255, 0.2)'
+              : 'rgba(0,0,0,0.0)'
+          }
           onClick={(e) => onClick(e, country.code, country.name)}
         />
       ))}
@@ -105,7 +114,10 @@ const All = ({ dark }) => {
         <Link to={`/country/${current.code}`}>{current.name}</Link>
       </Tooltip>
       <Tooltip left={50} top={10} opened={showTip}>
-        <Text>Tip: just click on the country</Text>
+        <Text>Tip: click on the country to see detail</Text>
+      </Tooltip>
+      <Tooltip left={50} top={60} opened={showTip}>
+        <Text>Tip: your favourite countries highlighted orange</Text>
       </Tooltip>
     </Map>
   );

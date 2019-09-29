@@ -1,10 +1,11 @@
 import React from 'react';
 import { Fade } from 'react-reveal';
+import Container from '../misc/Container';
 
 const FavouritesPage = () => {
   return (
     <Fade>
-      <h2>PAGE</h2>
+      <Container>Work in progress</Container>
     </Fade>
   );
 };
